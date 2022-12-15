@@ -22,9 +22,13 @@ public class Main {
         transaction.commit();
 
         //Récupération de nouvellePersonne avec find() et getReference()
-
         Personne personneWithPK = em.find(Personne.class, 1);
+
+        //Récupération avec Query
+        Personne personneFromQuery = (Personne) em.createQuery("select p from Personne p where p.id = 1").getSingleResult();
+
         System.out.println(personneWithPK);
+        System.out.println(personneFromQuery);
         em.close();
         emf.close();
 
