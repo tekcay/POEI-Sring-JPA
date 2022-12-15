@@ -1,6 +1,8 @@
 package org.example;
 
 import org.example.model.Personne;
+import org.example.model.PersonnePK;
+import org.example.model.PersonneWithPK;
 
 import javax.persistence.*;
 
@@ -18,6 +20,11 @@ public class Main {
 
         em.persist(nouvellePersonne);
         transaction.commit();
+
+        //Récupération de nouvellePersonne avec find() et getReference()
+
+        Personne personneWithPK = em.find(Personne.class, 1);
+        System.out.println(personneWithPK);
         em.close();
         emf.close();
 
