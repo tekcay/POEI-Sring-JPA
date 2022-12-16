@@ -22,7 +22,7 @@ public class Test {
 
 
         transac.begin();
-        removeProductById(3, em);
+        removeProductById(2, em);
         transac.commit();
 
         transac.begin();
@@ -52,7 +52,7 @@ public class Test {
     }
 
     private static Produit getInfoOfProductById(int id, EntityManager em) {
-        return (Produit) em.createNativeQuery("SELECT p from produit p WHERE p.id=" + id, Produit.class).getSingleResult();
+        return (Produit) em.createNativeQuery("SELECT * from produit WHERE id=" + id, Produit.class).getSingleResult();
     }
 
     private static void removeProductById(int id, EntityManager em) {
