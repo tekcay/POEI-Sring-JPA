@@ -110,6 +110,11 @@ public class Main {
             System.out.println("nom = " + tmp.getNom());
         }
 
+        //NativeQuery
+        System.out.println("NativeQuery");
+        List<Personne> result = em.createNativeQuery("SELECT * FROM personne", Personne.class).getResultList();
+        result.forEach(personne6 -> System.out.println("nom = " + personne6.getNom()));
+
         em.close();
         emf.close();
 
