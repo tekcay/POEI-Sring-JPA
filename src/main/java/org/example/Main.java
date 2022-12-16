@@ -62,7 +62,7 @@ public class Main {
 
         //createQuery result list
         System.out.println("Liste des personnes avec l'id supérieur à 5");
-        Query query1=em.createQuery("select  p from Personne p where p.id > 5");
+        Query query1 = em.createQuery("select  p from Personne p where p.id > 5");
         List noms = query1.getResultList();
         //on recupere une liste d'objet
         for(Object nom : noms){
@@ -72,7 +72,7 @@ public class Main {
 
         // Utilisation du setParameter
         System.out.println("Liste de personne avec id superieur au parametre set");
-        Query query2=em.createQuery("select p from Personne p where p.id > :id");
+        Query query2 = em.createQuery("select p from Personne p where p.id > :id");
         query2.setParameter("id",15);
         List noms2 = query2.getResultList();
         //on recupere une liste d'objet
@@ -82,6 +82,17 @@ public class Main {
         }
 
         //Modification
+        transac.begin();
+        System.out.println("Modifier une occurrence");
+        Personne personne3 = em.find(Personne.class, 1);
+        System.out.printf("Personne avec l'ID 1 (avant modif) : %s %s \n", personne3.getNom(), personne3.getPrenom());
+        personne3.setNom("toto");
+        personne3.setPrenom("tata");
+        em.flush();
+        transac.commit();
+
+        Personne personne4 = em.find(Personne.class, 1);
+        System.out.printf("Personne avec l'ID 1 (après modif) : %s %s \n", personne4.getNom(), personne4.getPrenom());
 
         em.close();
         emf.close();
