@@ -94,6 +94,22 @@ public class Main {
         Personne personne4 = em.find(Personne.class, 1);
         System.out.printf("Personne avec l'ID 1 (après modif) : %s %s \n", personne4.getNom(), personne4.getPrenom());
 
+        //Suppression
+        transac.begin();
+        System.out.println("Suppression d'une occurrence (Personne avec l'id 6)");
+        Personne personne5 = em.find(Personne.class, 6);
+        em.remove(personne5);
+        transac.commit();
+
+        //Une requête pur vérifier si cette occurrence a bien été supprimée
+
+        Query query3 = em.createQuery("select p from Personne p where p.id between 5 and 7");
+        List noms1 = query3.getResultList();
+        for (Object nom : noms1) {
+            Personne tmp = (Personne) nom;
+            System.out.println("nom = " + tmp.getNom());
+        }
+
         em.close();
         emf.close();
 
