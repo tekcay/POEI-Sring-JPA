@@ -10,6 +10,7 @@
         <class>org.example.model.Personne</class>
         <class>org.example.model.PersonnePK</class>
         <class>org.example.model.PersonneWithPK</class>
+        <class>org.example.exercice1.Produit</class>
         <properties>
             <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>

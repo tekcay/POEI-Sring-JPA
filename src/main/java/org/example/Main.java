@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.exercice1.Test;
 import org.example.model.Personne;
 import org.example.model.PersonneWithPK;
 
@@ -8,7 +9,12 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
+        //demo();
+        Test.init();
 
+    }
+
+    private static void demo() {
         System.out.println("Hello world!");
 
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("demojpa");
@@ -117,6 +123,5 @@ public class Main {
 
         em.close();
         emf.close();
-
     }
 }
